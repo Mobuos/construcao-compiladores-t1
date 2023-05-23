@@ -1,1 +1,9 @@
 COMENTARIO=1
+ALGORITMO=2
+DECLARE=3
+LITERAL=4
+INTEIRO=5
+'algoritmo'=2
+'declare'=3
+'literal'=4
+'inteiro'=5
