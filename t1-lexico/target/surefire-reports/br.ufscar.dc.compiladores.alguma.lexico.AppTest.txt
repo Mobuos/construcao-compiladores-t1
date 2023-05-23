@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: br.ufscar.dc.compiladores.alguma.lexico.AppTest
+-------------------------------------------------------------------------------
+<<<<<<< HEAD:t1-lexico/target/surefire-reports/br.ufscar.dc.compiladores.alguma.lexico.AppTest.txt
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.037 s - in br.ufscar.dc.compiladores.alguma.lexico.AppTest
+=======
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.145 s - in br.ufscar.dc.compiladores.alguma.lexico.AppTest
+>>>>>>> origin/main:alguma-lexico/target/surefire-reports/br.ufscar.dc.compiladores.alguma.lexico.AppTest.txt
