@@ -4,26 +4,38 @@ import java.io.IOException;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.Token;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 public class Principal {
 
     public static void main(String[] args) {
-        try {
-            // args[0] é o primeiro argumento da linha de comando
-            CharStream cs = CharStreams.fromFileName(args[0]);
-<<<<<<< HEAD:t1-lexico/src/main/java/br/ufscar/dc/compiladores/t1/lexico/Principal.java
-            T1Lexer lex = new T1Lexer(cs);
-            while (lex.nextToken().getType() != Token.EOF) {
-                System.out.println("");
-=======
-            AlgumaLexer lex = new AlgumaLexer(cs);
-
-            Token t = null;
-            while ((t = lex.nextToken()).getType() != Token.EOF) {
-                System.out.println("<" + AlgumaLexer.VOCABULARY.getDisplayName(t.getType()) + "," + t.getText() + ">");
->>>>>>> origin/main:alguma-lexico/src/main/java/br/ufscar/dc/compiladores/alguma/lexico/Principal.java
+        String arquivoSaida = args[1];
+        try(PrintWriter pw = new PrintWriter(arquivoSaida)) {
+            try {
+                // args[0] é o primeiro argumento da linha de comando
+                CharStream cs = CharStreams.fromFileName(args[0]);
+                T1Lexer lex = new T1Lexer(cs);
+    
+                Token t = null;
+                while ((t = lex.nextToken()).getType() != Token.EOF) {
+                    String nomeToken = T1Lexer.VOCABULARY.getDisplayName(t.getType());
+                    if(nomeToken.equals("ERRO")) {
+                        pw.println("Linha "+t.getLine()+": "+t.getText()+" - simbolo nao identificado");
+                        break;
+                    }
+                    else if(nomeToken.equals("COMENT_N_FECHADO")) {
+                        pw.println("Linha "+t.getLine()+": comentario nao fechado");
+                        break;
+                    }
+                    else {
+                        pw.println("<'" + t.getText() + "'," + nomeToken  + ">");
+                    }
+                }
+            } catch (IOException ex) {
             }
-        } catch (IOException ex) {
+        } catch(FileNotFoundException fnfe) {
+            System.err.println("O arquivo/diretório não existe:"+args[1]);
         }
     }
 }
