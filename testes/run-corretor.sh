@@ -8,5 +8,5 @@ ras="790716, 791964, 790035"
 opcao="gabarito-t1"
 
 mkdir $pastaTemp
-java -jar $corretor $executavel gcc $pastaTemp $casosTeste "$ras" "$opcao"
+java -jar $corretor "java -jar $executavel" gcc $pastaTemp $casosTeste "$ras" "$opcao"
 rm -rf $pastaTemp
