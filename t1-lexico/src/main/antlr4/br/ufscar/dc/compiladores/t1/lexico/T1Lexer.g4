@@ -1,6 +1,6 @@
 lexer grammar T1Lexer;
 
-COMENTARIO       : '{' .*?  '}' {skip();};
+COMENTARIO       : '{' ~('\n')*? '}' {skip();};
 ALGORITMO        : 'algoritmo';
 FIM_ALGORITMO    : 'fim_algoritmo';
 DECLARE          : 'declare';
@@ -65,6 +65,7 @@ NUM_INT          : ('0'..'9')+;
 NUM_REAL         : ('0'..'9')+ ('.' ('0'..'9')+)?;
 IDENT            : ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'0'..'9'|'_')*;
 CADEIA           : '"' ( ~('\n') )*? '"';
+CADEIA_N_FECHADA : '"' ( ~('\n'|'"') )*? '\n';
 WS               : ( ' ' | '\t' | '\r' | '\n' ) {skip();};
-COMENT_N_FECHADO : '{' ( ~('}'|'\n') )*? '\n';
+COMENT_N_FECHADO : '{' ~('\n'|'}')*? '\n';
 ERRO             : .;

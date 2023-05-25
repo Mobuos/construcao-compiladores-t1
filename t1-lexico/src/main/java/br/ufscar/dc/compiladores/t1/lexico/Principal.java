@@ -28,6 +28,10 @@ public class Principal {
                         pw.println("Linha "+t.getLine()+": comentario nao fechado");
                         break;
                     }
+                    else if(nomeToken.equals("CADEIA_N_FECHADA")) {
+                        pw.println("Linha "+t.getLine()+": cadeia literal nao fechada");
+                        break;
+                    }
                     else {
                         pw.println("<'" + t.getText() + "'," + nomeToken  + ">");
                     }
