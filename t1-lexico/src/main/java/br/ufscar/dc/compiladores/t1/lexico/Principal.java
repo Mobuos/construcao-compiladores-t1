@@ -20,14 +20,19 @@ public class Principal {
                 Token t = null;
                 while ((t = lex.nextToken()).getType() != Token.EOF) {
                     String nomeToken = T1Lexer.VOCABULARY.getDisplayName(t.getType());
+                    
+                    // Mensagem de erro para qualquer simbolo não identificado. 
                     if(nomeToken.equals("ERRO")) {
                         pw.println("Linha "+t.getLine()+": "+t.getText()+" - simbolo nao identificado");
                         break;
                     }
+                    // Mensagem de erro customizada para comentários não fechados.
                     else if(nomeToken.equals("COMENT_N_FECHADO")) {
                         pw.println("Linha "+t.getLine()+": comentario nao fechado");
                         break;
                     }
+                    
+                    // Mensagem de erro customizada para strings não fechadas.
                     else if(nomeToken.equals("CADEIA_N_FECHADA")) {
                         pw.println("Linha "+t.getLine()+": cadeia literal nao fechada");
                         break;

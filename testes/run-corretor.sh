@@ -5,8 +5,11 @@ executavel=$PWD/t1-lexico/target/t1-lexico-1.0-SNAPSHOT-jar-with-dependencies.ja
 pastaTemp=$PWD/temp
 casosTeste=$PWD/testes/casos-de-teste
 ras="790716, 791964, 790035"
-opcao="gabarito-t1"
+opcao="t1"
 
-mkdir $pastaTemp
+if [ ! -d $pastaTemp ]
+then
+    mkdir $pastaTemp
+fi
+
 java -jar $corretor "java -jar $executavel" gcc $pastaTemp $casosTeste "$ras" "$opcao"
-rm -rf $pastaTemp
